@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+<!-- Page Title -->
+{% block title %}Register{% endblock %}
+
+<!-- Body Content -->
+{% block content %}
+<div class="container">
+
+    <!-- Display form value errors -->
+    {% if form.errors %}
+    {% for field, errors in form.errors.items() %}
+    {% for error in errors %}
+    <div class="container w-75 mx-auto position-fixed translate-middle z-1" style="top: 100px; left: 50%;">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><small>{{ error }}</small></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    <div>
+        <h1 class="display-5 text mb-5 fw-bold text-capitalize text-center">New User</h1>
+    </div>
+
+    <!-- Register User form -->
+    <div class="container-fluid w-100 m-auto">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.password_hash.label(class="form-label") }}
+                {{ form.password_hash(class="form-control") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.password_hash_2.label(class="form-label") }}
+                {{ form.password_hash_2(class="form-control") }}
+            </div>
+
+            <div class="mt-5">
+                {{ form.add(class="btn btn-sm btn-success px-3", type="submit") }}
+            </div>
+
+
+        </form>
+    </div>
+</div>
+{% endblock %}

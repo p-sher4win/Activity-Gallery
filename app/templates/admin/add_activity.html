@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+<!-- Page Title -->
+{% block title %}New Activity{% endblock %}
+
+<!-- Body Content -->
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="display-5 text mb-5 fw-bold text-capitalize text-center">New Activity</h1>
+    </div>
+
+    <div class="container-fluid w-100 m-auto">
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('root.add_activity') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.images.label(class="form-label") }}
+                {{ form.images(class="form-control", multiple=True) }}
+            </div>
+
+            <div class="mt-5">
+                {{ form.submit(class="btn btn-sm btn-success px-3", type="submit") }}
+            </div>
+
+
+        </form>
+    </div>
+</div>
+{% endblock %}

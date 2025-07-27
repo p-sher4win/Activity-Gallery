@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid bg-light">
+    <div class="row pb-3 mx-auto" style="max-width: 1200px;">
+        <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="display-6 m-0 mb-md-2 text-center hero-title-font">Science Club</h1>
+            <h5 class="mb-2 mb-md-5 text-center fst-italic subtitle-font">Nirmala Institute of Education, Altinho Panaji
+            </h5>
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid" width="300px" alt="logo">
+        </div>
+    </div>
+</div>
+
+<div class="py-3"></div>
+
+<div class="container text-center mt-5 mb-3">
+    <h6 class="text-uppercase text-body-tertiary">Recent Activity</h6>
+</div>
+
+<div class="container">
+    {% if activities %}
+    <!-- Image Here -->
+    <div class="row">
+        {% for activity in activities %}
+        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch mb-4">
+            <div class="card w-100 h-100 shadow-sm">
+
+                <a href="{{ url_for('main.get_activity', id=activity.id) }}" class="link-dark link-underline-opacity-0">
+                    <!-- Carousel -->
+                    <div id="carousel{{ activity.id }}" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner" style="height: 250px; overflow: hidden;">
+                            <div class="text-end small-date-text p-2">
+                                <small>{{ activity.date_added.strftime('%d %B %Y')
+                                    }}</small>
+                            </div>
+                            {% for url in activity.img_urls %}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <img src="{{ url }}" class="img-fluid w-100 h-100 object-fit-cover" alt="img">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ activity.id }}"
+                            data-bs-slide="prev">
+                            <i class="bi bi-chevron-left text-body-tertiary fw-lighter display-6 d-none d-lg-block"></i>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ activity.id }}"
+                            data-bs-slide="next">
+                            <i
+                                class="bi bi-chevron-right text-body-tertiary fw-lighter display-6 d-none d-lg-block"></i>
+                        </button>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="card-body text-center d-flex flex-column justify-content-center"
+                        style="min-height: 80px;">
+                        <p class="text-capitalize fw-medium m-0 p-0">
+                            <span class="text-body-tertiary fw-semibold me-1">Title:</span>
+                            <small>{{ activity.title }}</small>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="col-12 col-sm-8 col-md-7 mx-auto text-center mb-5">
+        <h1 class="text-capitalize fw-medium fs-6">No Activities Found</h1>
+    </div>
+
+    {% endif %}
+</div>
+
+<div class="container text-center pt-5 my-5">
+    <a href="{{ url_for('main.activities') }}" class="link-underline link-underline-opacity-0">Explore More 🚀</a>
+</div>
+{% endblock %}

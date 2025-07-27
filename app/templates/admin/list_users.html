@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+<!-- Page Title -->
+{% block title %}List Users{% endblock %}
+
+<!-- Body Content -->
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="display-5 text mb-3 fw-bold text-capitalize text-center">List Users</h1>
+    </div>
+
+    {% if users %}
+    <table class="table table-bordered text-center small-footer-text">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Join Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.date_created.strftime('%d/%m/%y') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

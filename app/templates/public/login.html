@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+<!-- Page Title -->
+{% block title %}Login{% endblock %}
+
+<!-- Body Content -->
+{% block content %}
+<div class="container">
+    <div>
+        <h1 class="display-5 text mb-5 fw-bold text-capitalize text-center">Login</h1>
+    </div>
+
+    <div class="container-fluid w-100 m-auto">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control") }}
+            </div>
+
+            <div class="mt-5">
+                {{ form.login(class="btn btn-sm btn-success px-3", type="submit") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
