@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="container-fluid bg-light">
-    <div class="row pb-3 mx-auto" style="max-width: 1200px;">
-        <div class="col-6 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="display-6 m-0 mb-md-2 text-center hero-title-font">Science Club</h1>
-            <h5 class="mb-2 mb-md-5 text-center fst-italic subtitle-font">Nirmala Institute of Education, Altinho Panaji
-            </h5>
+<div class="container border hero-bg-container rounded" style="min-height: 180px; max-height: 550px;">
+    <div class="row my-3 hero-row" style="min-height: 180px;  max-height: 600px;">
+        <div class="col-8 d-flex justify-content-center align-items-center">
+            <div class="title-bg rounded p-md-3 p-lg-5 shadow-lg">
+                <h1 class="text-uppercase text-center fw-bold text-title display-2">S<span class="h2 display-4 fw-bold">cience</span> C<span class="h2 display-4 fw-bold">lub</span></h1>
+                <h6 class="text-center fw-bold px-1 py-2">Nirmala Institute of Education, Altinho Panaji</h6>
+            </div>
         </div>
-        <div class="col-6 d-flex justify-content-center align-items-center">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid" width="300px" alt="logo">
+        <div class="col-4 d-flex justify-content-center align-items-center">
+            <img src="{{ url_for('static', filename='images/logo1.png') }}" class="img-fluid shadow-lg" style="min-height: auto; min-width: 110px; max-width: 250px; opacity: .9;" alt="logo">
         </div>
     </div>
 </div>
