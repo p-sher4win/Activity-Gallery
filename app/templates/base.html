@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Base Dynamic Title -->
-    <title>{% block title %}Base{% endblock %}</title>
+    <title>ActiZone{% block title %}{% endblock %}</title>
+
+    <!-- Log Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo1.png') }}" sizes="64x64">
 
     <!-- Bootstrap5 CSS CDN Links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -144,6 +147,11 @@
         <footer>
             <div class="container py-4">
                 <p class="text-center text-light m-0 mb-2 fw-semibold">Copyright ©2025 ActiZone</p>
+                <p class="text-center text-light m-0 p-0 small-text"><small>designed by </small>
+                    <small class="link-light link-underline-opacity-50">
+                        spCosta
+                    </small>
+                </p>
             </div>
         </footer>
     </div>
